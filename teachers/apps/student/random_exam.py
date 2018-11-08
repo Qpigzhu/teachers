@@ -32,10 +32,11 @@ def add_new_examseat(class_name,studnet_id,seat_number,student_name):
     add_examseats.save()
 
 
-def main(all_seatnumber):
+def main(all_class,all_seatnumber):
     """
 
     :每个课室的座位总数 all_seatnumber:
+    :一共多少个考场 all_class:
     :return 成功200:
     """
     #每个课室的座位总数
@@ -52,7 +53,7 @@ def main(all_seatnumber):
     print(random_number)
 
     # 随机班级列表
-    class_number = [i for i in range(1, 7)]
+    class_number = [i for i in range(1, all_class+1)]
 
     while Bool_Complete:
         #控制每一个班座位
