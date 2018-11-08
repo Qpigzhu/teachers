@@ -10,11 +10,11 @@
                         </div>
                         <div class="panel-body">
                                     <label for="all_class">考场总数</label>
-                                    <input id="all_class" type="text" name="all_class" class="form-control" placeholder="请输入考场总数" required id="all_class" />
+                                    <input id="all_class"  oninput="count_number()" type="text" name="all_class" class="form-control" placeholder="请输入考场总数" required id="all_class" />
                                     <p class="text-danger"></p>
                                     <label for="all_exam">每个考场人数</label>
-                                    <input id="all_exam" type="text" name="all_exam" class="form-control" placeholder="请输入每个考场人数" required id="all_exam" />
-                                    <p class="text-danger"></p>
+                                    <input id="all_exam"  oninput="count_number()" type="text" name="all_exam" class="form-control" placeholder="请输入每个考场人数" required id="all_exam" />
+                                    <p class="text-danger">学生总人数:{{ Student_Count }}</p>
                                     <span class="pull-left text-danger" id="msg"></span>
                                 <input  onclick="rangdom_exam()" id="submits" type="button" value="确定" class="btn btn-primary pull-right" style="margin-top: 20px;">
                         <div id="prog" style="display: none;">
@@ -35,59 +35,81 @@
 {% block js %}
     <script type="text/javascript">
         function rangdom_exam() {
-            //显示进度条
-            $("#prog").attr('style', 'display: block');
+
             var all_class = $("#all_class").val();
             var all_exam = $("#all_exam").val();
-
-                //判断输入框是否为空
-             if(all_class == "" || all_exam == ""){
-                alert("不能为空");
+            //控制请求
+            var bool_true_flase = false;
+                //判断输入框是否为空,是否为数字
+             if(all_class == "" || all_exam == "" || isNaN(all_class) || isNaN(all_exam) || all_class==0 || all_exam==0){
+                alert("输入错误");
                 return 0;
-            }
+            }else{
+                 //显示进度条
+                 $("#prog").attr('style', 'display: block');
+                 bool_true_flase = true;
                 //每1秒向后端请求一次，计算百分比
-            var sitv = setInterval(function () {
+                var sitv = setInterval(function () {
+                    $.ajax({
+                        cache:false,
+                        type:'post',
+                        data:'',
+                        url:'{% url 'progcount' %}',
+                        ansyc:true,
+                        beforeSend:function (xhr,settings) {
+                            xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
+                        },
+                        success:function (data){
+                            var res = data['cont_prog'] + '%'
+                            $('#prog_in').attr('style', 'width:' + res)
+                            console('width:' + res)
+                        }
+                    });
+                },1000);
+
+             }
+
+             //通过验证才可以请求
+            if(bool_true_flase){
+                //处理数据
                 $.ajax({
                     cache:false,
-                    type:'post',
-                    data:'',
-                    url:'{% url 'progcount' %}',
+                    type:'POST',
+                    url:'{% url 'rangdom' %}',
+                    data:{all_class:all_class,all_exam:all_exam},
                     ansyc:true,
                     beforeSend:function (xhr,settings) {
                         xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
                     },
-                    success:function (data){
-                        var res = data['cont_prog'] + '%'
-                        $('#prog_in').attr('style', 'width:' + res)
-                        console('width:' + res)
+                    success:function (data) {
+                        if(data['status'] == 'SUCCESS'){
+                            alert("成功排位");
+                            clearInterval(sitv);// 此时请求成功返回结果了，结束对后台进度的查询
+                            //变css成成功状态
+                            $('#prog_out').attr("class", "progress progress-bar-success");
+                    }else{
+                        if(data['code'] == 500){
+                            alert("输入错误")
+                        }
                     }
+                 }
+
                 });
-            },1000);
+            }
 
-             //处理数据
-            $.ajax({
-                cache:false,
-                type:'POST',
-                url:'{% url 'rangdom' %}',
-                data:{all_class:all_class,all_exam:all_exam},
-                ansyc:true,
-                beforeSend:function (xhr,settings) {
-                    xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
-                },
-                success:function (data) {
-                    if(data['status'] == 'SUCCESS'){
-                        alert("成功排位");
-                        clearInterval(sitv);// 此时请求成功返回结果了，结束对后台进度的查询
-                        //变css成成功状态
-                        $('#prog_out').attr("class", "progress progress-bar-success");
-                }else{
-                    if(data['code'] == 500){
-                        alert("输入错误")
-                    }
-                }
-             }
+            }
 
-            });
+
+        function count_number() {
+            var all_class = $("#all_class").val();
+            var all_exam = $("#all_exam").val();
+            var count = parseInt(all_exam) * parseInt(all_class);
+            if(all_class == "" || all_exam == "" || isNaN(all_class) || isNaN(all_exam)){
+                $("#msg").text("总人数:");
+            }else{
+                $("#msg").text("总人数:" + count);
+            }
+
         }
     </script>
 {% endblock %}
