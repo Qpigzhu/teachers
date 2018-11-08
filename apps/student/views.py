@@ -72,8 +72,6 @@ class UpFileView(View):
 
 #随机排考试座位表
 class RandomExamSeatView(View):
-
-
     def get(self,request):
             return render(request, 'random_exam.html', {
                 "Student_Count":StudentName.objects.all().count()

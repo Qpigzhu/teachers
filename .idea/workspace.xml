@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e5f5650f-05c0-42d1-b551-1847c8d3c5d3" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/apps/student/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/student/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/random_exam.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/random_exam.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -44,24 +45,14 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/apps/student/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="78" column="17" lean-forward="true" selection-start-line="78" selection-start-column="17" selection-end-line="78" selection-end-column="30" />
+            <state relative-caret-position="-294">
+              <caret line="25" column="22" lean-forward="true" selection-start-line="25" selection-start-column="22" selection-end-line="25" selection-end-column="29" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
                 <element signature="e#340#462#0" />
-                <element signature="e#497#595#0" />
                 <element signature="e#741#1636#0" />
                 <element signature="e#2098#2254#0" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="response.py" pinned="false" current-in-tab="false">
-        <entry file="file://D:/TeachersVue/Lib/site-packages/django/http/response.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="10648">
-              <caret line="500" selection-start-line="500" selection-end-line="500" />
             </state>
           </provider>
         </entry>
@@ -126,12 +117,11 @@
       <file leaf-file-name="random_exam.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/random_exam.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
-              <caret line="17" column="81" selection-start-line="17" selection-start-column="81" selection-end-line="17" selection-end-column="81" />
+            <state relative-caret-position="360">
+              <caret line="64" column="62" selection-start-line="64" selection-start-column="62" selection-end-line="64" selection-end-column="62" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="e#3567#3663#0#HTML" />
-                <element signature="e#3758#4009#0#HTML" />
               </folding>
             </state>
           </provider>
@@ -184,7 +174,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-49" />
     <option name="y" value="58" />
     <option name="width" value="1456" />
@@ -375,7 +365,6 @@
           <folding>
             <element signature="e#0#9#0" expanded="true" />
             <element signature="e#340#462#0" />
-            <element signature="e#497#595#0" />
             <element signature="e#741#1636#0" />
             <element signature="e#2098#2254#0" />
           </folding>
@@ -443,7 +432,6 @@
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
             <element signature="e#3567#3663#0#HTML" />
-            <element signature="e#3758#4009#0#HTML" />
           </folding>
         </state>
       </provider>
@@ -479,7 +467,6 @@
           <folding>
             <element signature="e#0#9#0" expanded="true" />
             <element signature="e#340#462#0" />
-            <element signature="e#497#595#0" />
             <element signature="e#741#1636#0" />
             <element signature="e#2098#2254#0" />
           </folding>
@@ -608,7 +595,6 @@
           <folding>
             <element signature="e#0#9#0" expanded="true" />
             <element signature="e#340#462#0" />
-            <element signature="e#497#595#0" />
             <element signature="e#741#1636#0" />
             <element signature="e#2098#2254#0" />
           </folding>
@@ -684,13 +670,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://D:/TeachersVue/Lib/site-packages/django/http/response.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="10648">
-          <caret line="500" selection-start-line="500" selection-end-line="500" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/teachers/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1034">
@@ -728,14 +707,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://D:/TeachersVue/Lib/site-packages/django/http/response.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="500" selection-start-line="500" selection-end-line="500" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/apps/student/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="78" column="17" lean-forward="true" selection-start-line="78" selection-start-column="17" selection-end-line="78" selection-end-column="30" />
+        <state relative-caret-position="-294">
+          <caret line="25" column="22" lean-forward="true" selection-start-line="25" selection-start-column="22" selection-end-line="25" selection-end-column="29" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
             <element signature="e#340#462#0" />
-            <element signature="e#497#595#0" />
             <element signature="e#741#1636#0" />
             <element signature="e#2098#2254#0" />
           </folding>
@@ -744,12 +729,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/random_exam.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="17" column="81" selection-start-line="17" selection-start-column="81" selection-end-line="17" selection-end-column="81" />
+        <state relative-caret-position="360">
+          <caret line="64" column="62" selection-start-line="64" selection-start-column="62" selection-end-line="64" selection-end-column="62" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
             <element signature="e#3567#3663#0#HTML" />
-            <element signature="e#3758#4009#0#HTML" />
           </folding>
         </state>
       </provider>

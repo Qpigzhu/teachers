@@ -62,7 +62,7 @@
                         success:function (data){
                             var res = data['cont_prog'] + '%'
                             $('#prog_in').attr('style', 'width:' + res)
-                            console('width:' + res)
+                            $("#msg").text("正在排位中(" + res + ")");
                         }
                     });
                 },1000);
@@ -84,6 +84,7 @@
                     success:function (data) {
                         if(data['status'] == 'SUCCESS'){
                             alert("成功排位");
+                            $("#msg").text("完成随机排位");
                             clearInterval(sitv);// 此时请求成功返回结果了，结束对后台进度的查询
                             //变css成成功状态
                             $('#prog_out').attr("class", "progress progress-bar-success");
