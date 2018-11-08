@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form action="{% url 'upload' %}" method="post" enctype="multipart/form-data">
+        <input type="file" name="file_name">
+        <input type="submit">
+            {% csrf_token %}
+
+
+    </form>
+    <p>{% for k,v in file_form.errors.items %}{{ v }}{% endfor %}</p>
+</body>
+</html>
