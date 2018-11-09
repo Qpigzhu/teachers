@@ -21,9 +21,11 @@ from django.views.static import serve
 from .settings import MEDIA_ROOT
 from student.views import UpFileView,RandomExamSeatView,Prog_Count
 from grade.views import EntryGradeView,MarkProgCount
+from .views import indexView
 
 urlpatterns = [
     path('xadmin/', xadmin.site.urls),
+    path('',indexView.as_view(),name="home"),
     #处理上传文件URL
     re_path('media/(?P<path>.*)$',serve,{'document_root':MEDIA_ROOT}),
     path('upload/',UpFileView.as_view(),name="upload"),

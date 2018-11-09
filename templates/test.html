@@ -5,11 +5,42 @@
     <title>Title</title>
 </head>
 <body>
-    <form action="{% url 'upload' %}" method="post" enctype="multipart/form-data">
-        <input type="file" name="file_name">
-        <input type="submit">
-            {% csrf_token %}
-    </form>
-    <p>{% for k,v in file_form.errors.items %}{{ v }}{% endfor %}</p>
+
 </body>
 </html>
+
+
+
+{% extends 'base.html' %}
+{% block main %}
+         <div class="containter">
+            <div class="row">
+                <div class="col-sm-3"></div>
+                <div class="col-sm-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">{% if stundet_count  %}已录入学生花名册{% else %}请录入学生花名册{% endif %}</h3>
+                        </div>
+                        <div class="panel-body">
+                                {% if stundet_count  %}
+                                    请进行录入成绩或排位操作
+                                {% else %}
+                               <form action="{% url 'upload' %}" method="post" enctype="multipart/form-data">
+                                     <div class="form-group">
+                                            <label for="exampleInputFile">上传成绩表文件</label>
+                                            <input type="file" name="file_name" id="exampleInputFile">
+                                            <p class="help-block">请先上传学生花名册再进行其他操作</p>
+                                    </div>
+                                    <input id="submits" type="submit" value="确定" class="btn btn-primary pull-right" style="margin-top: 20px;">
+                                    {% csrf_token %}
+                               </form>
+
+                                    <p>{% for k,v in file_form.errors.items %}{{ v }}{% endfor %}</p>
+                                {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+         </div>
+{% endblock %}

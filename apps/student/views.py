@@ -29,10 +29,6 @@ def Success():
 
 
 class UpFileView(View):
-    def get(self,request):
-        return render(request,'test.html',{
-
-        })
     def post(self,request):
         file_form = FileForm(request.POST, request.FILES)
         if file_form.is_valid():
