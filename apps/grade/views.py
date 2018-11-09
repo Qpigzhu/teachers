@@ -2,7 +2,7 @@ import xlrd
 
 from django.shortcuts import render
 from django.views import View
-from django.http import JsonResponse
+from django.http import JsonResponse,HttpResponseRedirect
 
 from .models import Grade,Subject
 from .forms import FileForm
@@ -60,6 +60,7 @@ def add_grade_subject(student_id,subject,subject_grade):
 
 
 
+
 class EntryGradeView(View):
     def get(self,request):
         all_subject = Subject.objects.all()
@@ -83,7 +84,8 @@ class EntryGradeView(View):
             #获取总行数
             row = table.nrows
             Row = row
-
+            #重新计数
+            SaveNumber = 0
             for i in range(2,row):
                 #打印表格所有内容
                 all_datil = table.row_values(i)
@@ -104,10 +106,8 @@ class EntryGradeView(View):
                     add_grade_subject(all_datil[0], subject_name, all_datil[3])
                     SaveNumber +=1
 
-            return render(request,'mark.html',{
-                "all_subject": all_subject,
-                "msg":"成功录入"
-            })
+            #重定向回录入成绩页面
+            return HttpResponseRedirect('/grade/')
 
         else:
             return render(request,'mark.html',{

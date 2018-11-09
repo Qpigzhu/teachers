@@ -59,14 +59,13 @@
                             var res = data['cont_prog'] + '%'
                             $('#prog_in').attr('style', 'width:' + res)
                             $("#error").text("录入中(" + res + ")");
+                            if(data[cont_prog] == 100){
+                                clearInterval(sitv);
+                                 $('#prog_out').attr("class", "progress progress-bar-success");
+                            }
                         }
                     });
                 },1000);
-             }
-             if(error=="成功录入"){
-                 clearInterval(sitv);// 此时请求成功返回结果了，结束对后台进度的查询
-                            //变css成成功状态
-                 $('#prog_out').attr("class", "progress progress-bar-success");
              }
         }
     </script>
