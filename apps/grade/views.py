@@ -52,14 +52,23 @@ def add_grade_subject(student_id,subject,subject_grade):
     add_grade.save()
 
 
+def CountTotalScore(student_id):
+    """
+    计算成绩总分
+    :param student_id:
+    :return:
+    """
+    Sum = 0
+    try:
+        add_grade = Grade.objects.get(student_id=student_id)
+    except:
+        return 0
 
+    Sum = add_grade.chinese + add_grade.math  + add_grade.english + add_grade.politics + add_grade.geography + add_grade.physics + add_grade.chemistry + add_grade. biology + add_grade.sports + add_grade.history
 
+    add_grade.TotalScore = Sum
 
-
-
-
-
-
+    add_grade.save()
 
 class EntryGradeView(View):
     def get(self,request):
@@ -69,7 +78,6 @@ class EntryGradeView(View):
         })
 
     def post(self,request):
-
         global Row,SaveNumber
         file_form = FileForm(request.POST,request.FILES)
         all_subject = Subject.objects.all()
@@ -100,9 +108,13 @@ class EntryGradeView(View):
 
                     #录入科目成绩
                     add_grade_subject(all_datil[0],subject_name,all_datil[3])
+
+                    #计算总分
+                    CountTotalScore(all_datil[0])
                     SaveNumber +=1
 
                 else:
+                    CountTotalScore(all_datil[0])
                     add_grade_subject(all_datil[0], subject_name, all_datil[3])
                     SaveNumber +=1
 
