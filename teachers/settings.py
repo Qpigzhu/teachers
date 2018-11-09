@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'student.apps.StudentConfig',
     'xadmin',
     'crispy_forms',
+    'grade.apps.GradeConfig',
 
 ]
 

@@ -14,6 +14,7 @@ class FileForm(forms.Form):
     file_name = forms.FileField(validators=[validate_excel])
 
 
+
 class ExamSeatForm(forms.Form):
     all_class = forms.IntegerField(required=True)
     all_exam = forms.IntegerField(required=True)
