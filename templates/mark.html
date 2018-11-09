@@ -21,7 +21,7 @@
                                                 <option>{{ subject.subject_name }}</option>
                                             {% endfor %}
                                         </select>
-                                        <p>{% for k,v in file_form.errors.items %}{{ v }}{% endfor %}{{ msg }}</p>
+                                        <p id="error">{% for k,v in file_form.errors.items %}{{ v }}{% endfor %}{{ msg }}</p>
                                         <input id="submits" onclick="pro()" type="submit" value="确定" class="btn btn-primary pull-right" style="margin-top: 20px;">
                                     </form>
 
@@ -42,7 +42,32 @@
 {% block js %}
     <script type="text/javascript">
         function pro() {
-             $("#prog").attr('style', 'display: block');
+             var error = $("#error").text()
+             if(error == ""){
+                 $("#prog").attr('style', 'display: block');
+                  var sitv = setInterval(function () {
+                    $.ajax({
+                        cache:false,
+                        type:'post',
+                        data:'',
+                        url:'{% url 'markprog' %}',
+                        ansyc:true,
+                        beforeSend:function (xhr,settings) {
+                            xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
+                        },
+                        success:function (data){
+                            var res = data['cont_prog'] + '%'
+                            $('#prog_in').attr('style', 'width:' + res)
+                            $("#error").text("录入中(" + res + ")");
+                        }
+                    });
+                },1000);
+             }
+             if(error=="成功录入"){
+                 clearInterval(sitv);// 此时请求成功返回结果了，结束对后台进度的查询
+                            //变css成成功状态
+                 $('#prog_out').attr("class", "progress progress-bar-success");
+             }
         }
     </script>
 {% endblock %}

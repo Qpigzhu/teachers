@@ -20,7 +20,7 @@ from django.views.static import serve
 
 from .settings import MEDIA_ROOT
 from student.views import UpFileView,RandomExamSeatView,Prog_Count
-from grade.views import EntryGradeView
+from grade.views import EntryGradeView,MarkProgCount
 
 urlpatterns = [
     path('xadmin/', xadmin.site.urls),
@@ -30,4 +30,5 @@ urlpatterns = [
     path('rangdom/',RandomExamSeatView.as_view(),name='rangdom'),
     path('progcount/',Prog_Count.as_view(),name="progcount"),
     path('grade/',EntryGradeView.as_view(),name="entry_grade"),
+    path('markprog/',MarkProgCount.as_view(),name="markprog")
 ]

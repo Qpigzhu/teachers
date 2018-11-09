@@ -115,8 +115,8 @@ class EntryGradeView(View):
                 "file_form":file_form
             })
 
-class ProgCount(View):
-    def progcount(self,request):
+class MarkProgCount(View):
+    def post(self,request):
         global Row,SaveNumber
         data = {}
         cont_prog = int((SaveNumber / Row) * 100)
