@@ -16,6 +16,10 @@ django.setup()
 from student.models import StudentName,ExamSeat
 
 def CountProg():
+    """
+    计算百分比进度条
+    :return:
+    """
     student_count = StudentName.objects.all().count()
     exam_seat_count = ExamSeat.objects.all().count()
     prog = int((exam_seat_count  / student_count) * 100)
@@ -44,7 +48,6 @@ def main(all_class,all_seatnumber):
 
     :每个课室的座位总数 all_seatnumber:
     :一共多少个考场 all_class:
-    :return 成功200:
     """
     #每个课室的座位总数
     all_seatnumber = int(all_seatnumber) + 1
